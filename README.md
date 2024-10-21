@@ -16,7 +16,7 @@
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/GuilhermeGomesti1/meep-shop-test.git
+git clone https://github.com/GuilhermeGomesti1/meep-shop.git
 cd meep-shop
 ```
 
