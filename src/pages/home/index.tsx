@@ -1,19 +1,12 @@
-import { useProducts } from "../../contexts/product-context";
-import CatalogoMeep from "../../components/catalogo-meep";
+import CartSummary from "../../components/cart/cart-summary";
+import CatalogProducts from "../../components/catalog-products";
 import BackToTopButton from "../../components/common/buttons/go-top";
-import CartSummary from "../../components/common/cart-summary";
 
-export function Home() {
-  const { products, loading } = useProducts();
-
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
+export default function Home() {
   return (
     <div>
       <BackToTopButton />
-      <CatalogoMeep products={products} />
+      <CatalogProducts />
       <CartSummary />
     </div>
   );

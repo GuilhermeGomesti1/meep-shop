@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useCartContext } from "../../../contexts/cart-context";
 import { Product } from "../../../../types/product";
-import CartSidebar from "../../cart-animation";
+import CartSidebar from "../cart-animation";
 
 const AddToCartButton: React.FC<{
   product: Product;
@@ -24,7 +24,7 @@ const AddToCartButton: React.FC<{
   return (
     <>
       <button
-        className="bg-[#CF0A8B] text-white px-4 py-2 rounded mt-4"
+        className="bg-[#CF0A8B] text-white px-4 py-2 rounded mt-4 transition-all duration-300 hover:bg-[#ff46be]"
         onClick={handleAddToCart}
       >
         Adicionar ao Carrinho
