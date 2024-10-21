@@ -17,7 +17,7 @@
 
 ```bash
 git clone https://github.com/GuilhermeGomesti1/meep-shop-test.git
-cd meep-shop-test
+cd meep-shop
 ```
 
 2. **Instale as dependências:**:
@@ -54,29 +54,34 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
 
 - **`public/`**: Contém arquivos estáticos e globais, incluindo imagens utilizadas na aplicação.
 - **`src/`**: Contém o código-fonte da aplicação.
+
 - **`components/`**: Componentes da aplicação.
 
-  - **`cart-animation/`**: Componente de barra lateral que exibe as informações do carrinho ao adicionar um produto.
+  - **`cart/`**: Componentes referente ao carrinho.
 
-  - **`cart-summary/`**:Componente que exibe uma barra inferior com um resumo do carrinho, incluindo a lista de produtos, a quantidade total de itens e o preço total. Mostra uma mensagem quando o carrinho está vazio.
+    - **`btn-add-cart.tsx`**: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
 
-  - **`catalago-meep/`**: Componente que exibe o catalogo de produtos.
+    - **`cart-animation/`**: Componente de barra lateral que exibe as informações do carrinho ao adicionar um produto.
+
+    - **`cart-summary/`**:Componente que exibe uma barra inferior com um resumo do carrinho, incluindo a lista de produtos, a quantidade total de itens e o preço total. Mostra uma mensagem quando o carrinho está vazio.
+
+    - **`quantity-products`**: Componente que permite selecionar e ajustar a quantidade de um item com botões de aumentar e diminuir. Dispara uma função de callback sempre que a quantidade é alterada, permitindo que o valor seja passado para o carrinho somente após ser enviado, em vez de refletir diretamente no carrinho pelos botões. Ele captura a quantidade e a envia para o mesmo.
+
+  - **`catalago-products/`**: Componente que exibe o catalogo de produtos.
 
   - **`common/`**: Contém os componentes mais reutilizáveis.
 
     - **`buttons/`**:
 
-      - `add-to-cart.tsx`: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
       - `go-top.tsx/`: Componente que exibe um button para ir ao topo da tela após descer o catálogo em telas menores.
-      - `order-submit-button.tsx/`: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
 
     - **`icons/`**: Icons reutilizáveis.
 
-    - **`quantity-input`**: Componente para ajustar a quantidade de um produto na página de carrinho. Atualiza automaticamente o total do preço baseado na quantidade selecionada através dos botões de increase e decrease refletindo as mudanças no contexto do carrinho.
-
-    - **`quantity-products`**: Componente que permite selecionar e ajustar a quantidade de um item com botões de aumentar e diminuir. Dispara uma função de callback sempre que a quantidade é alterada, permitindo que o valor seja passado para o carrinho somente após ser enviado, em vez de refletir diretamente no carrinho pelos botões. Ele captura a quantidade e a envia para o mesmo.
-
   - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
+
+  -**`order-submit/`**: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
+
+  -**`quantity-input/`**: Componente para ajustar a quantidade de um produto na página de carrinho. Atualiza automaticamente o total do preço baseado na quantidade selecionada através dos botões de increase e decrease refletindo as mudanças no contexto do carrinho.
 
 - **`context/`**:
 
@@ -89,6 +94,8 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
     Utiliza React Query para otimizar as requisições.
   - `use-product-by-id.ts`: Hook que busca um produto específico pelo ID. Utiliza React Query para otimizar as requisições e habilita a chamada somente se um ID válido for fornecido.
 
+-**`http`**: Configura uma instância do Axios para realizar requisições HTTP, definindo a URL base da API
+
 - **`pages`**:
 
   - `cart`: Página do carrinho.
@@ -100,15 +107,15 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
   - `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
   - `product-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
 
-- **`App.tsx`**: Configura o roteamento da aplicação, integrando os providers de contexto para gerenciar o carrinho e os produtos.
-
 - **`cart.test.tsx`**: Teste que veriica a funcionalidade do carrinho, assegurando que o preço total e a quantidade de produtos sejam calculados corretamente ao adicionar, aumentar, diminuir e remover itens.
 
 - **`index.tsx`**: Configura a aplicação React, renderizando o componente principal e fornecendo a configuração de rotas usando o RouterProvider.
 
+- **`router.tsx`**: Configura o roteamento da aplicação, integrando os providers de contexto para gerenciar o carrinho e os produtos.
+
 - **`types`**:
 
   - `cart-types.ts`: Define a estrutura e os types do contexto do carrinho de compras
-  - `product.d.ts`:Define a estrutura e os tipos de um produto no sistema.
+  - `product.ts`:Define a estrutura e os tipos de um produto no sistema.
 
 - **`db.json`**: Base de dados da API utilizada pelo JSON Server, lista os produtos e registra os pedidos feitos pelos usuários.
